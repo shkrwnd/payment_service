@@ -5,6 +5,7 @@ import { MainLayout } from "../layouts/MainLayout";
 import { HomePage } from "../pages/HomePage";
 import { LoginPage } from "../pages/LoginPage";
 import { SignupPage } from "../pages/SignupPage";
+import { AgentSettingsPage } from "../pages/AgentSettingsPage";
 import { ProtectedRoute } from "./ProtectedRoute";
 
 export const AppRoutes: React.FC = () => {
@@ -28,6 +29,14 @@ export const AppRoutes: React.FC = () => {
         <Route
           path="signup"
           element={authenticated ? <Navigate to="/" replace /> : <SignupPage />}
+        />
+        <Route
+          path="agent-settings"
+          element={
+            <ProtectedRoute>
+              <AgentSettingsPage />
+            </ProtectedRoute>
+          }
         />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
